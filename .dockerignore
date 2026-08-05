@@ -1,0 +1,15 @@
+node_modules
+.git
+.github
+.idea
+test
+docs
+coverage
+*.log
+*.md
+.mocharc.json
+.nycrc.json
+eslint.config.js
+jsdoc.json
+nodemon.json
+*.tar
