@@ -44,6 +44,9 @@ VOLUME ["/data"]
 # 设置环境变量
 ENV NODE_ENV=production
 ENV PORT=8080
+ENV LOGIN_SHELL_URL="https://secure.adviser.qa.oldmutual.co.za/iicSeaUmsWeb/logoutRedirect.html"
+ENV SSO_TOKEN_KEY="token"
+ENV SSO_USER_INFO_KEY="iicSeaUmsWeb-userInfo"
 
 # 暴露默认端口
 EXPOSE 8080
@@ -51,5 +54,5 @@ EXPOSE 8080
 # 切换至非 root 用户，增强安全性
 USER node
 
-# 启动 Node-RED
-CMD ["npm", "start"]
+# 启动 Node-RED，并显式指定项目内 settings.js
+CMD ["node", "packages/node_modules/node-red/red.js", "--settings", "/usr/src/node-red/packages/node_modules/node-red/settings.js"]
