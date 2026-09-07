@@ -44,9 +44,6 @@ VOLUME ["/data"]
 # 设置环境变量
 ENV NODE_ENV=production
 ENV PORT=8080
-ENV LOGIN_SHELL_URL="https://secure.adviser.qa.oldmutual.co.za/iicSeaUmsWeb/logoutRedirect.html"
-ENV SSO_TOKEN_KEY="token"
-ENV SSO_USER_INFO_KEY="iicSeaUmsWeb-userInfo"
 
 # 暴露默认端口
 EXPOSE 8080
