@@ -27,7 +27,11 @@ RUN npm prune --omit=dev
 FROM node:22-alpine
 
 # 安装常用工具（可选，如 tzdata 用于设置时区）
-RUN apk add --no-cache tzdata
+RUN apk update && \
+    apk add --no-cache tzdata git && \
+    # 清理 apk 缓存，进一步减小体积
+    rm -rf /var/cache/apk/* && \
+    rm -rf /var/lib/apt/lists/* 
 
 # 创建 Node-RED 用户和用户组，并设置工作目录
 WORKDIR /usr/src/node-red
@@ -35,18 +39,15 @@ WORKDIR /usr/src/node-red
 # 从 builder 阶段拷贝编译好的代码和生产环境依赖
 COPY --from=builder /usr/src/app /usr/src/node-red
 
-# 创建数据存储目录，并赋予 Node.js 默认用户权限
-RUN mkdir -p /data && chown node:node /data
-
-# 暴露数据卷
-VOLUME ["/data"]
-
 # 设置环境变量
 ENV NODE_ENV=production
 ENV PORT=8080
 
 # 暴露默认端口
 EXPOSE 8080
+
+RUN git config --global user.name "omviewer" && \
+    git config --global user.email "omviewer@oldmutual.com"
 
 # 切换至非 root 用户，增强安全性
 USER node
