@@ -83,6 +83,9 @@
         "multer": "2.1.1",
         "mustache": "4.2.0",
         "node-red-admin": "^4.1.6",
+        "node-red-contrib-aws-sqs-variable": "1.0.1",
+        "node-red-contrib-cron-plus": "^3.0.0",
+        "node-red-contrib-postgresql": "0.16.2",
         "node-watch": "0.7.4",
         "nopt": "5.0.0",
         "npm": "11.16.0",
@@ -99,9 +102,7 @@
         "uglify-js": "3.19.3",
         "validate-npm-package-name": "7.0.2",
         "ws": "7.5.10",
-        "xml2js": "0.6.2",
-        "node-red-contrib-aws-sqs-variable": "1.0.1",
-        "node-red-contrib-postgresql": "0.16.2"
+        "xml2js": "0.6.2"
     },
     "optionalDependencies": {
         "@node-rs/bcrypt": "1.10.7"

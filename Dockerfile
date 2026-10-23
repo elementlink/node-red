@@ -42,6 +42,7 @@ COPY --from=builder /usr/src/app /usr/src/node-red
 # 设置环境变量
 ENV NODE_ENV=production
 ENV PORT=8080
+ENV CONTEXT=nodered
 
 # 暴露默认端口
 EXPOSE 8080
@@ -53,4 +54,4 @@ RUN git config --global user.name "omviewer" && \
 USER node
 
 # 启动 Node-RED，并显式指定项目内 settings.js
-CMD ["node", "packages/node_modules/node-red/red.js", "--settings", "/usr/src/node-red/packages/node_modules/node-red/settings.js"]
+CMD ["node", "/usr/src/node-red/packages/node_modules/node-red/red.js", "--settings", "/usr/src/node-red/packages/node_modules/node-red/settings.js"]
